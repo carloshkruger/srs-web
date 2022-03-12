@@ -13,7 +13,8 @@ import {
   DontHaveAccount,
   DontHaveAccountLink
 } from './styles'
-import api, { handleApiError } from '../../services/api'
+import { handleApiError } from '../../services/api'
+import { useAuth } from '../../hooks/Auth'
 
 type FormData = {
   email: string
@@ -42,12 +43,12 @@ const SignIn: React.FC = () => {
   } = useForm<FormData>({
     resolver: yupResolver(validationSchema)
   })
+  const { signIn } = useAuth()
 
   async function onSubmit(data: FormData) {
     try {
       setLoading(true)
-
-      await api.post('/v1/auth', data)
+      await signIn(data)
     } catch (error) {
       handleApiError(error)
     } finally {
