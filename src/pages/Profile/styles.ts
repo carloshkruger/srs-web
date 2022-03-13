@@ -18,29 +18,11 @@ export const Content = styled.div`
   height: 100vh;
 `
 
-export const DeckTitle = styled.h1`
-  margin: 16px 0px;
-`
-
-export const Header = styled.header`
-  min-height: 60px;
+export const Form = styled.form`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  ul {
-    display: flex;
-    flex-direction: row;
-
-    li {
-      cursor: pointer;
-      padding: 16px;
-      list-style-type: none;
-      margin: 0px 8px;
-
-      &:hover {
-        background: #ff9000;
-      }
-    }
-  }
+  width: 100%;
+  max-width: 700px;
 `

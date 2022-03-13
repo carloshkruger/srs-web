@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import api from '../../services/api'
 import CreateDeckModal from './components/CreateDeckModal'
 import CreateCardModal from './components/CreateCardModal'
@@ -24,6 +25,7 @@ const Dashboard: React.FC = () => {
   const [isDeckModalOpen, setIsDeckModalOpen] = useState(false)
   const [decks, setDecks] = useState<DeckData[]>([])
   const { signOut } = useAuth()
+  const navigate = useNavigate()
 
   const findDecksForStudy = async () => {
     try {
@@ -38,6 +40,10 @@ const Dashboard: React.FC = () => {
   useEffect(() => {
     findDecksForStudy()
   }, [])
+
+  const goToProfilePage = () => {
+    navigate('/profile')
+  }
 
   const toggleDeckModal = () => {
     setIsDeckModalOpen(!isDeckModalOpen)
@@ -60,7 +66,7 @@ const Dashboard: React.FC = () => {
     <>
       <Header>
         <ul>
-          <li>Meu perfil</li>
+          <li onClick={goToProfilePage}>Meu perfil</li>
           <li onClick={toggleDeckModal}>Criar deck</li>
           <li onClick={toggleCardModal}>Criar card</li>
           <li onClick={signOut}>Sair</li>

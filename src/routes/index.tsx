@@ -7,6 +7,7 @@ import {
 import AppProvider from '../hooks'
 import Dashboard from '../pages/Dashboard'
 import ForgotPassword from '../pages/ForgotPassword'
+import Profile from '../pages/Profile'
 import ResetPassword from '../pages/ResetPassword'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -29,6 +30,10 @@ const Routes: React.FC = () => (
         <ReactRoute
           path="dashboard"
           element={<Route isPrivate Component={Dashboard} />}
+        />
+        <ReactRoute
+          path="profile"
+          element={<Route isPrivate Component={Profile} />}
         />
       </ReactRoutes>
     </AppProvider>
