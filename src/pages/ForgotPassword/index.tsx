@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { toast } from 'react-toastify'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import api, { handleApiError } from '../../services/api'
 import { Container, Form, ButtonContainer, BackToLoginLink } from './styles'
+import { Toast } from '../../services/Toast'
 
 type FormData = {
   email: string
@@ -41,11 +41,8 @@ const ForgotPassword: React.FC = () => {
       reset({
         email: ''
       })
-      toast(
-        `Foi enviado um e-mail de recuperação de senha para "${data.email}"`,
-        {
-          type: 'success'
-        }
+      Toast.success(
+        `Foi enviado um e-mail de recuperação de senha para "${data.email}"`
       )
     } catch (error) {
       handleApiError(error)

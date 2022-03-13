@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { toast } from 'react-toastify'
 import Modal from '../../../../components/Modal'
 import { ButtonContainer, CloseButton, CreateButton, Form } from './styles'
 import api, { handleApiError } from '../../../../services/api'
 import TextArea from '../../../../components/TextArea'
 import Select from '../../../../components/Select'
+import { Toast } from '../../../../services/Toast'
 
 interface CardForm {
   deckId: string
@@ -67,7 +67,7 @@ const CreateCardModal: React.FC<CreateCardModalProps> = ({
 
       await api.post('v1/cards', data)
 
-      toast('Card criado com sucesso', { type: 'success' })
+      Toast.success('Card criado com sucesso')
       onCloseModal()
       afterCreateCard()
     } catch (error) {

@@ -2,11 +2,11 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { toast } from 'react-toastify'
 import Modal from '../../../../components/Modal'
 import { ButtonContainer, CloseButton, CreateButton, Form } from './styles'
 import api, { handleApiError } from '../../../../services/api'
 import Input from '../../../../components/Input'
+import { Toast } from '../../../../services/Toast'
 
 interface DeckForm {
   name: string
@@ -55,7 +55,7 @@ const CreateDeckModal: React.FC<CreateDeckModalProps> = ({
 
       await api.post('v1/decks', { name })
 
-      toast('Deck criado com sucesso', { type: 'success' })
+      Toast.success('Deck criado com sucesso')
       onCloseModal()
       afterCreateDeck()
     } catch (error) {

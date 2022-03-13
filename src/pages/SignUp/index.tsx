@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
-import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
@@ -14,6 +13,7 @@ import {
   AlreadyHaveAccount,
   AlreadyHaveAccountLink
 } from './styles'
+import { Toast } from '../../services/Toast'
 
 type FormData = {
   name: string
@@ -59,9 +59,7 @@ const SignUp: React.FC = () => {
 
       await api.post('/v1/users', data)
 
-      toast('Cadastro realizado com sucesso', {
-        type: 'success'
-      })
+      Toast.success('Cadastro realizado com sucesso')
 
       navigate('/signin')
     } catch (error) {

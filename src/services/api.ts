@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { toast } from 'react-toastify'
+import { Toast } from './Toast'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_URL || 'http://localhost:3001'
@@ -18,7 +18,5 @@ const extractMessageFromError = (error: any): string => {
 }
 
 export const handleApiError = (error: any): void => {
-  toast(extractMessageFromError(error), {
-    type: 'error'
-  })
+  Toast.error(extractMessageFromError(error))
 }

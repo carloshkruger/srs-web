@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { toast } from 'react-toastify'
 import api from '../../services/api'
 import CreateDeckModal from './components/CreateDeckModal'
 import CreateCardModal from './components/CreateCardModal'
 import DeckCardsList from './components/DeckCardsList'
 import { Container, Content, DeckTitle, Header } from './styles'
 import { useAuth } from '../../hooks/Auth'
+import { Toast } from '../../services/Toast'
 
 export interface DeckData {
   deck: {
@@ -31,7 +31,7 @@ const Dashboard: React.FC = () => {
       setDecks(response.data.decks)
     } catch {
       setDecks([])
-      toast('Erro ao buscar os decks para estudo', { type: 'error' })
+      Toast.error('Erro ao buscar os decks para estudo')
     }
   }
 
@@ -49,7 +49,7 @@ const Dashboard: React.FC = () => {
 
   const toggleCardModal = () => {
     if (!decks.length) {
-      toast('Necessário primeiro criar um deck', { type: 'warning' })
+      Toast.warning('Necessário primeiro criar um deck')
       return
     }
 

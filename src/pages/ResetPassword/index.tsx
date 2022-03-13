@@ -3,11 +3,11 @@ import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
 import { useNavigate, useSearchParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import api, { handleApiError } from '../../services/api'
 import { Container, Form, ButtonContainer } from './styles'
+import { Toast } from '../../services/Toast'
 
 type FormData = {
   password: string
@@ -48,7 +48,7 @@ const ResetPassword: React.FC = () => {
         token: searchParams.get('token')
       })
 
-      toast('Senha redefinida com sucesso', { type: 'success' })
+      Toast.success('Senha redefinida com sucesso')
       navigate('/signin')
     } catch (error) {
       handleApiError(error)
