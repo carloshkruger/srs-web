@@ -3,6 +3,7 @@ import { shade } from 'polished'
 
 interface ContainerProps {
   loading: boolean
+  secondary: boolean
 }
 
 export const Container = styled.button<ContainerProps>`
@@ -24,7 +25,14 @@ export const Container = styled.button<ContainerProps>`
     `}
 
   ${(props) =>
+    props.secondary &&
+    css`
+      background: unset;
+    `}
+
+  ${(props) =>
     !props.loading &&
+    !props.secondary &&
     css`
       &:hover {
         background: ${shade(0.2, '#ff9000')};

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes as ReactRoutes } from 'react-router-dom'
 import AppProvider from '../hooks'
+import Dashboard from '../pages/Dashboard'
 import ForgotPassword from '../pages/ForgotPassword'
 import ResetPassword from '../pages/ResetPassword'
 import SignIn from '../pages/SignIn'
@@ -14,6 +15,7 @@ const Routes: React.FC = () => (
         <Route path="signin" element={<SignIn />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route path="reset-password" element={<ResetPassword />} />
+        <Route path="dashboard" element={<Dashboard />} />
       </ReactRoutes>
     </AppProvider>
   </BrowserRouter>
