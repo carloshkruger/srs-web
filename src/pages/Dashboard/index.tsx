@@ -5,6 +5,7 @@ import CreateDeckModal from './components/CreateDeckModal'
 import CreateCardModal from './components/CreateCardModal'
 import DeckCardsList from './components/DeckCardsList'
 import { Container, Content, DeckTitle, Header } from './styles'
+import { useAuth } from '../../hooks/Auth'
 
 export interface DeckData {
   deck: {
@@ -22,6 +23,7 @@ const Dashboard: React.FC = () => {
   const [isCardModalOpen, setIsCardModalOpen] = useState(false)
   const [isDeckModalOpen, setIsDeckModalOpen] = useState(false)
   const [decks, setDecks] = useState<DeckData[]>([])
+  const { signOut } = useAuth()
 
   const findDecksForStudy = async () => {
     try {
@@ -61,7 +63,7 @@ const Dashboard: React.FC = () => {
           <li>Meu perfil</li>
           <li onClick={toggleDeckModal}>Criar deck</li>
           <li onClick={toggleCardModal}>Criar card</li>
-          <li>Sair</li>
+          <li onClick={signOut}>Sair</li>
         </ul>
       </Header>
       <Container>
