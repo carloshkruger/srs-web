@@ -138,12 +138,7 @@ const Profile: React.FC = () => {
             errorMessage={errors.email?.message}
           />
 
-          <Button
-            loading={loading}
-            textWhileLoading="Salvando..."
-            style={{ marginTop: '24px' }}
-            type="submit"
-          >
+          <Button loading={loading} style={{ marginTop: '24px' }} type="submit">
             Salvar
           </Button>
         </Form>
@@ -175,7 +170,6 @@ const Profile: React.FC = () => {
 
           <Button
             loading={passwordLoading}
-            textWhileLoading="Salvando..."
             style={{ marginTop: '24px' }}
             type="submit"
           >

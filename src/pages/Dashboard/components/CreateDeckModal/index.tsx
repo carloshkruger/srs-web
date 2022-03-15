@@ -81,11 +81,7 @@ const CreateDeckModal: React.FC<CreateDeckModalProps> = ({
           <CloseButton secondary onClick={onCloseModal} type="button">
             Fechar
           </CloseButton>
-          <CreateButton
-            textWhileLoading="Criando..."
-            loading={loading}
-            type="submit"
-          >
+          <CreateButton loading={loading} type="submit">
             Criar
           </CreateButton>
         </ButtonContainer>

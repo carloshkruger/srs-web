@@ -108,11 +108,7 @@ const CreateCardModal: React.FC<CreateCardModalProps> = ({
           <CloseButton secondary onClick={onCloseModal} type="button">
             Fechar
           </CloseButton>
-          <CreateButton
-            textWhileLoading="Criando..."
-            loading={loading}
-            type="submit"
-          >
+          <CreateButton loading={loading} type="submit">
             Criar
           </CreateButton>
         </ButtonContainer>

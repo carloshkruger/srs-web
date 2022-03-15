@@ -1,10 +1,24 @@
 import styled, { css } from 'styled-components'
 import { shade } from 'polished'
+import { FaSpinner } from 'react-icons/fa'
 
 interface ContainerProps {
   loading: boolean
   secondary: boolean
 }
+
+export const Spinner = styled(FaSpinner)`
+  animation: spin infinite 2s linear;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`
 
 export const Container = styled.button<ContainerProps>`
   background: #ff9000;
