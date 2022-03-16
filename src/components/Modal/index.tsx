@@ -6,9 +6,15 @@ interface IModalProps {
   children: any
   isOpen: boolean
   setIsOpen: () => void
+  contentStyle?: React.CSSProperties
 }
 
-const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
+const Modal: React.FC<IModalProps> = ({
+  children,
+  isOpen,
+  setIsOpen,
+  contentStyle
+}) => {
   const [modalStatus, setModalStatus] = useState(isOpen)
 
   useEffect(() => {
@@ -34,7 +40,8 @@ const Modal: React.FC<IModalProps> = ({ children, isOpen, setIsOpen }) => {
           borderRadius: '8px',
           width: '100%',
           maxWidth: '768px',
-          border: 'none'
+          border: 'none',
+          ...contentStyle
         },
         overlay: {
           backgroundColor: '#121214e6'

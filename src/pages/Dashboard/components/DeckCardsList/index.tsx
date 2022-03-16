@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { DeckData } from '../..'
 import {
   Container,
@@ -14,8 +15,14 @@ interface DeckCardProps {
 const CardItem: React.FC<DeckData> = ({ deck, cards }) => {
   const moreThanOneAvailable = cards.availableForStudyQuantity > 1
 
+  const navigate = useNavigate()
+
+  const goToDeckPage = () => {
+    navigate(`/decks/${deck.id}`)
+  }
+
   return (
-    <CardItemContainer>
+    <CardItemContainer onClick={goToDeckPage}>
       <CardItemTitle>{deck.name}</CardItemTitle>
       <CardItemNumbers>
         {cards.availableForStudyQuantity} card

@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import AppProvider from '../hooks'
 import Dashboard from '../pages/Dashboard'
+import Deck from '../pages/Deck'
 import ForgotPassword from '../pages/ForgotPassword'
 import Profile from '../pages/Profile'
 import ResetPassword from '../pages/ResetPassword'
@@ -34,6 +35,10 @@ const Routes: React.FC = () => (
         <ReactRoute
           path="profile"
           element={<Route isPrivate Component={Profile} />}
+        />
+        <ReactRoute
+          path="decks/:id"
+          element={<Route isPrivate Component={Deck} />}
         />
       </ReactRoutes>
     </AppProvider>
