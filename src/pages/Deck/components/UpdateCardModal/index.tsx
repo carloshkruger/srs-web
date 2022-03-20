@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -49,8 +49,10 @@ const UpdateCardModal: React.FC<UpdateCardModalProps> = ({
     resolver: yupResolver(validationSchema)
   })
 
-  setValue('originalText', card.originalText)
-  setValue('translatedText', card.translatedText)
+  useEffect(() => {
+    setValue('originalText', card.originalText)
+    setValue('translatedText', card.translatedText)
+  }, [card])
 
   const onCloseModal = () => {
     setIsOpen()

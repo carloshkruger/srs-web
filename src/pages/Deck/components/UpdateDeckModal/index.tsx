@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -47,7 +47,9 @@ const UpdateDeckModal: React.FC<UpdateDeckModalProps> = ({
     resolver: yupResolver(validationSchema)
   })
 
-  setValue('name', deck.name)
+  useEffect(() => {
+    setValue('name', deck.name)
+  }, [deck])
 
   const onCloseModal = () => {
     setIsOpen()

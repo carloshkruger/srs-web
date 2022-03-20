@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from 'yup'
@@ -75,8 +75,10 @@ const Profile: React.FC = () => {
 
   const { user, updateUser } = useAuth()
 
-  setValue('name', user.name)
-  setValue('email', user.email)
+  useEffect(() => {
+    setValue('name', user.name)
+    setValue('email', user.email)
+  }, [user])
 
   const onUpdateUserData = async (data: FormData) => {
     try {
