@@ -12,6 +12,7 @@ import Profile from '../pages/Profile'
 import ResetPassword from '../pages/ResetPassword'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
+import Study from '../pages/Study'
 import Route from './Route'
 
 const Routes: React.FC = () => (
@@ -39,6 +40,10 @@ const Routes: React.FC = () => (
         <ReactRoute
           path="decks/:id"
           element={<Route isPrivate Component={Deck} />}
+        />
+        <ReactRoute
+          path="study"
+          element={<Route isPrivate Component={Study} />}
         />
       </ReactRoutes>
     </AppProvider>
