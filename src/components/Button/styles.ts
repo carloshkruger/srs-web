@@ -31,6 +31,11 @@ export const Container = styled.button<ContainerProps>`
   font-weight: 500;
   transition: background-color 0.2s;
 
+  &[disabled] {
+    cursor: default;
+    opacity: 0.8;
+  }
+
   ${(props) =>
     props.loading &&
     css`
@@ -48,7 +53,7 @@ export const Container = styled.button<ContainerProps>`
     !props.loading &&
     !props.secondary &&
     css`
-      &:hover {
+      &:enabled:hover {
         background: ${shade(0.2, '#ff9000')};
       }
     `}
