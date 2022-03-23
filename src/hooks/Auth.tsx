@@ -32,17 +32,6 @@ interface AuthContextData {
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
 
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response.status === 401 || error.response.status === 403) {
-      localStorage.removeItem('@SRSApp:token')
-      localStorage.removeItem('@SRSApp:user')
-    }
-    throw error
-  }
-)
-
 const AuthProvider: React.FC = ({ children }) => {
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('@SRSApp:token')
@@ -90,6 +79,17 @@ const AuthProvider: React.FC = ({ children }) => {
       localStorage.setItem('@SRSApp:user', JSON.stringify(user))
     },
     [data.token]
+  )
+
+  api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+      if (error.response.status === 401 || error.response.status === 403) {
+        signOut()
+      }
+
+      throw error
+    }
   )
 
   const value = useMemo(
