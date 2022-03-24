@@ -34,7 +34,7 @@ export const Container = styled.button<ContainerProps>`
 
   &[disabled] {
     cursor: default;
-    opacity: 0.8;
+    opacity: 0.5;
   }
 
   ${(props) =>

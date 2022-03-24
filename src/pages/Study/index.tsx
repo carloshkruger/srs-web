@@ -17,8 +17,10 @@ import {
   TurnCardButton,
   TurnCardButtonContainer,
   StudyCompletedContainer,
-  StudyCompletedText
+  StudyCompletedText,
+  AudioWaveContainer
 } from './styles'
+import AudioWave from '../../components/AudioWave'
 
 export type Card = {
   id: string
@@ -139,9 +141,9 @@ const Study: React.FC = () => {
           <FlipCardFront isBackCardVisible={isBackCardVisible}>
             <Text>{cards[currentCardIndex].originalText}</Text>
 
-            <audio controls>
-              <source src={cards[currentCardIndex].audioFileName} />
-            </audio>
+            <AudioWaveContainer>
+              <AudioWave audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+            </AudioWaveContainer>
 
             <TurnCardButtonContainer>
               <TurnCardButton secondary onClick={toggleBackCardVisibility}>
@@ -156,6 +158,12 @@ const Study: React.FC = () => {
               </FlipCardBackTextContainerOriginalText>
               <Text>{cards[currentCardIndex].translatedText}</Text>
             </FlipCardBackTextContainer>
+
+            <AudioWaveContainer>
+              {isBackCardVisible && (
+                <AudioWave audio="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" />
+              )}
+            </AudioWaveContainer>
 
             <ButtonsContainer>
               <DifficultyButton

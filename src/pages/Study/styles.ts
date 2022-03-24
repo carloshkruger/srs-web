@@ -113,3 +113,12 @@ export const StudyCompletedText = styled.p`
   font-size: 32px;
   margin-bottom: 16px;
 `
+
+export const AudioWaveContainer = styled.div`
+  width: 70%;
+  align-self: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
