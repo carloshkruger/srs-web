@@ -165,48 +165,52 @@ const Study: React.FC = () => {
               )}
             </AudioWaveContainer>
 
-            <ButtonsContainer>
-              <DifficultyButton
-                disabled={isSavingReview}
-                type="button"
-                onClick={() =>
-                  handleChosenDifficulty(CardReviewDifficultyLevel.EASY)
-                }
-              >
-                Fácil
-              </DifficultyButton>
-              <DifficultyButton
-                disabled={isSavingReview}
-                type="button"
-                onClick={() =>
-                  handleChosenDifficulty(CardReviewDifficultyLevel.GOOD)
-                }
-              >
-                Bom
-              </DifficultyButton>
-              <DifficultyButton
-                disabled={isSavingReview}
-                type="button"
-                onClick={() =>
-                  handleChosenDifficulty(CardReviewDifficultyLevel.HARD)
-                }
-              >
-                Difícil
-              </DifficultyButton>
-              <DifficultyButton
-                disabled={isSavingReview}
-                type="button"
-                onClick={() =>
-                  handleChosenDifficulty(
-                    CardReviewDifficultyLevel.TOTAL_BLACKOUT
-                  )
-                }
-              >
-                Não lembro
-              </DifficultyButton>
-            </ButtonsContainer>
+            <TurnCardButtonContainer>
+              <TurnCardButton secondary onClick={toggleBackCardVisibility}>
+                Virar carta
+              </TurnCardButton>
+            </TurnCardButtonContainer>
           </FlipCardBack>
         </FlipCard>
+
+        <ButtonsContainer>
+          <DifficultyButton
+            disabled={isSavingReview || !isBackCardVisible}
+            type="button"
+            onClick={() =>
+              handleChosenDifficulty(CardReviewDifficultyLevel.EASY)
+            }
+          >
+            Fácil
+          </DifficultyButton>
+          <DifficultyButton
+            disabled={isSavingReview || !isBackCardVisible}
+            type="button"
+            onClick={() =>
+              handleChosenDifficulty(CardReviewDifficultyLevel.GOOD)
+            }
+          >
+            Bom
+          </DifficultyButton>
+          <DifficultyButton
+            disabled={isSavingReview || !isBackCardVisible}
+            type="button"
+            onClick={() =>
+              handleChosenDifficulty(CardReviewDifficultyLevel.HARD)
+            }
+          >
+            Difícil
+          </DifficultyButton>
+          <DifficultyButton
+            disabled={isSavingReview || !isBackCardVisible}
+            type="button"
+            onClick={() =>
+              handleChosenDifficulty(CardReviewDifficultyLevel.TOTAL_BLACKOUT)
+            }
+          >
+            Não lembro
+          </DifficultyButton>
+        </ButtonsContainer>
       </Content>
     </Container>
   )

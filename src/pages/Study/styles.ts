@@ -87,10 +87,12 @@ export const FlipCardBackTextContainerOriginalText = styled(Text)`
 `
 
 export const ButtonsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  padding-top: 16px;
+  display: grid;
   width: 100%;
+  grid-template-columns: repeat(auto-fit, minmax(150px, auto));
+  grid-gap: 8px;
+  justify-items: center;
 `
 
 export const DifficultyButton = styled(Button)`
