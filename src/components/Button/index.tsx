@@ -13,7 +13,7 @@ const Button: React.FC<ButtonProps> = ({
   secondary = false,
   ...props
 }) => (
-  <Container secondary={secondary} loading={loading} type="button" {...props}>
+  <Container secondary={secondary} $loading={loading} type="button" {...props}>
     {loading ? <Spinner /> : children}
   </Container>
 )

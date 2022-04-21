@@ -3,7 +3,7 @@ import { shade } from 'polished'
 import { FaSpinner } from 'react-icons/fa'
 
 interface ContainerProps {
-  loading: boolean
+  $loading: boolean
   secondary: boolean
 }
 
@@ -38,7 +38,7 @@ export const Container = styled.button<ContainerProps>`
   }
 
   ${(props) =>
-    props.loading &&
+    props.$loading &&
     css`
       cursor: default;
       opacity: 0.8;
@@ -51,7 +51,7 @@ export const Container = styled.button<ContainerProps>`
     `}
 
   ${(props) =>
-    !props.loading &&
+    !props.$loading &&
     !props.secondary &&
     css`
       &:enabled:hover {

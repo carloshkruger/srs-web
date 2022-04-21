@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import api from '../../services/api'
+import api, { handleApiError } from '../../services/api'
 import CreateDeckModal from './components/CreateDeckModal'
 import CreateCardModal from './components/CreateCardModal'
 import DeckCardsList from './components/DeckCardsList'
@@ -31,9 +31,8 @@ const Dashboard: React.FC = () => {
     try {
       const response = await api.get('v1/decks/study')
       setDecks(response.data.decks)
-    } catch {
-      setDecks([])
-      Toast.error('Erro ao buscar os decks para estudo')
+    } catch (error) {
+      handleApiError(error)
     }
   }
 
