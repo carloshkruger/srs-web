@@ -68,7 +68,8 @@ const CreateCardModal: React.FC<CreateCardModalProps> = ({
       await api.post('v1/cards', data)
 
       Toast.success('Card criado com sucesso')
-      onCloseModal()
+      clearErrors()
+      reset()
       afterCreateCard()
     } catch (error) {
       handleApiError(error)
